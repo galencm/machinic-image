@@ -1,0 +1,41 @@
+
+description:
+    image machine
+
+aliases:
+
+
+includes:
+ - devise.py:
+    duplicates: True
+    checks: [gphoto2]
+ - source_indexable.py:
+    rpc: False
+    name: bar
+    args: [--source-name,bar,--source,boook]
+
+routes:
+ - "if '/1' do create_glworb capture1"
+ - "if '/2' do create_glworb capture2"
+ - "if '/bar' do create_glworb capture3"
+
+pipes:
+ - >
+  pipe thing {
+      starti
+      rotate stuff: rotate 90
+      endi
+  }
+
+rules:
+ - [numeral,['ocr_results','int'],['image_binary_key','str']]
+ - [roman_numeral,['ocr_results','roman']]
+ - [string,['ocr_results','str']]
+ - [rest,['uuid','str']]
+
+prepare:
+
+set:
+ - BAR:
+   - marker:capture1: -1
+   - marker:capture2: 0

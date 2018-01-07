@@ -1,0 +1,9 @@
+#machine specific
+start.sh
+stop.sh
+restart.sh
+.jobs/
+
+#python
+__pycache__/
+*.py[cod]

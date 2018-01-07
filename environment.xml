@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<machine>
+<environment name="machine_image">
+    <!-- os packages -->
+    <include name="povray" system="dnf" />
+    <include name="povray" system="apt" />
+    <!-- python packages -->
+    <!-- alphabetical would be useful -->
+    <include name="lorem" system="python3"/>
+    <include name="Pillow" system="python3" />
+    <include name="attrs" system="python3" />
+    <include name="logzero" system="python3" />
+    <include name="redis" system="python3" />
+    <include name="python-consul" system="python3" />
+    <include name="gphoto2" system="python3" />
+    <include name="Jinja2" system="python3" />
+    <include name="tesserocr" system="python3" />
+
+    <!-- linux_x86_64 
+        x86_64 
+        linux_amd64 
+        linux_arm
+    -->
+    <!-- dl and install -->
+    <!--
+    unzip /tmp/bKFAg00ZGr54_ddmr6CpXy -d /tmp
+    sudo cp -r /tmp/chdkptp-r785/ /usr/local/src/chdkptp
+    sudo ln -s /usr/local/src/chdkptp/chdkptp.sh /usr/local/bin/chdkptp
+    -->
+    <include name="check_gphoto"
+            system="linux_amd64"
+            url="check_gphoto"
+            destination="/usr/local/bin"
+            command="local copy"
+    />
+    <include name="gphoto-check"
+            system="linux_arm"
+            url="gphoto_check"
+            destination="/usr/local/bin"
+            command="local copy"
+    />    
+    <include name="chdkptp"
+            system="linux_amd64"
+            url="https://www.assembla.com/spaces/chdkptp/documents/bKFAg00ZGr54_ddmr6CpXy/download/bKFAg00ZGr54_ddmr6CpXy"
+            fileformat="zip"
+            command=""
+            >
+            <raw line="sudo cp -r /tmp/chdkptp-r785/ /usr/local/src/chdkptp" />
+            <raw line="sudo ln -s /usr/local/src/chdkptp/chdkptp.sh /usr/local/bin/chdkptp" />
+    </include>
+    <include name="chdkptp"
+            system="linux_arm"
+            url="https://www.assembla.com/spaces/chdkptp/documents/bJUowA0ZGr54kQdmr6QqzO/download/bJUowA0ZGr54kQdmr6QqzO"
+            fileformat="zip"
+            command=""
+            >
+            <raw line="sudo cp -r /tmp/chdkptp-r785/ /usr/local/src/chdkptp" />
+            <raw line="sudo ln -s /usr/local/src/chdkptp/chdkptp.sh /usr/local/bin/chdkptp" />
+    </include>
+
+
+    <!-- append files with something like 
+        include system="raw" -->
+</environment>
+</machine>

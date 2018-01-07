@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<!--
+    gsl -script:machine_yaml.gsl simple.xml 
+    cp foo.yaml ../foo/machine.yaml 
+    python3 machine.py run --name foo
+    gsl -script:permutate.gsl simple.xml 
+
+    !remember to start capture1
+    python3 slurp-terminal-3.py run
+
+-->
+<machine description="image machine">
+    <dontinclude file="devise.py" duplicates="false"><check>gphoto2</check></dontinclude>
+    <dontinclude file="pipeline_image.py"/>
+
+    <route trigger="/1" call="create_glworb">
+        <argument>capture1</argument>
+    </route>
+    <route trigger="/foo" call="create_glworb">
+        <conditional type="greater than or equal">.4</conditional>
+        <conditional type="less than or equal">1</conditional>
+        <argument>{'payload'}</argument>
+        <argument>{'from'}</argument>
+    </route>
+    <route trigger="/fooz" call="create_glworb">
+        <conditional type="greater than or equal">.4</conditional>
+        <argument>{'payload'}</argument>
+        <argument>{'from'}</argument>
+    </route>
+
+    <sequence name="thing">
+        <step call="starti"/>
+        <step call="rotate" description="rotate stuff">
+            <argument>90</argument>
+        </step>
+        <step call="endi"/>
+    </sequence>
+
+    <pattern name="numeral">
+        <rule field="ocr_results" field_type="int"/>
+        <rule field="image_binary_key" field_type="str"/>
+    </pattern>
+    <pattern name="roman_numeral">
+        <rule field="ocr_results" field_type="roman"/>
+    </pattern>
+    <pattern name="string">
+        <rule field="ocr_results" field_type="str"/>
+    </pattern>
+    <pattern name="rest">
+        <rule field="uuid" field_type="str"/>
+    </pattern>
+    
+    <peripheral type="button" alternative_press="a">
+        <output type="integer" value="1" destination="/1"/>
+    </peripheral>
+    <peripheral type="button" alternative_press="b">
+        <output type="integer" value="1" destination="/bfoo"/>
+        <output type="integer" value="2" destination="/bbar"/>
+        <output type="integer" value="3" destination="/bbaz"/>
+    </peripheral>
+    <peripheral type="viewer">
+        <input filter="capture*" />
+    </peripheral>
+    <peripheral type="slurp" source="BAR" name="capture1">
+        <input source="/foo">
+            <call>create_glworb</call>
+            <argument>capture1</argument>
+        </input>
+    </peripheral>
+    <peripheral type="slurp" method="generic" source="BAR" name="capture2" >
+        <input source="/bar">
+            <call>create_glworb</call>
+            <argument>capture2</argument>
+        </input>
+    </peripheral>
+    <peripheral type="slurp" method="gphoto2" name="capture3" source="">
+        <input source="/bar">
+            <call>create_glworb</call>
+            <argument>capture3</argument>
+        </input>
+    </peripheral>
+    <!--
+        b = boook.Boook('texxt',[('toc',1,'partial'),('index',5,'partial'),('bar',5,'full'),('baz',5,'full'),('zab',5,'full'),('zoom',5,'full')],output_directory=uuuu_path)
+    -->
+    <source type="boook" location="BAR">
+        <boook>
+            <section pages="1" type="partial">toc</section>
+            <section pages="5" type="partial">index</section>
+            <section pages="5" type="full">bar</section>
+            <section pages="5" type="full">baz</section>
+            <section pages="5" type="full">zab</section>
+            <section pages="5" type="full">zoom</section>
+        </boook>
+    </source>
+</machine>

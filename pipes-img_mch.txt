@@ -1,0 +1,6 @@
+pipe thing {
+    starti
+    rotate stuff: rotate 90
+    endi
+}
+
