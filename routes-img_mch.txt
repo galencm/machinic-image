@@ -1,3 +1,0 @@
-if '/1' do create_glworb capture1
-if '/2' do create_glworb capture2
-if '/bar' do create_glworb capture3

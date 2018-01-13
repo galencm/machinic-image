@@ -1,6 +1,0 @@
-if '/1' do create_glworb capture1
-if .4 >=  '/foo' <= 1 do create_glworb {'payload'} {'from'}
-if '/fooz' >= .4 do create_glworb {'payload'} {'from'}
-if '/foo' do create_glworb capture1
-if '/bar' do create_glworb capture2
-if '/bar' do create_glworb capture3

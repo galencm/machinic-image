@@ -1,4 +1,0 @@
-['numeral', ['ocr_results', 'int'], ['image_binary_key', 'str']]
-['roman_numeral', ['ocr_results', 'roman']]
-['string', ['ocr_results', 'str']]
-['rest', ['uuid', 'str']]
