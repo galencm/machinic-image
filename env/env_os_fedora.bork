@@ -9,6 +9,19 @@
 ok yum povray
 
 
+which check_gphoto
+#0: found 1:not found
+available=$?
+if [[ $available == 1 ]]
+    then
+    sudo cp check_gphoto (include.destination)
+fi
+
+if [[ $available == 0 ]]
+    then echo check_gphoto found
+fi
+
+
 which chdkptp
 #0: found 1:not found
 available=$?
@@ -22,10 +35,10 @@ if [[ $available == 1 ]]
     sudo cp -r /tmp/chdkptp-r785/ /usr/local/src/chdkptp
     sudo ln -s /usr/local/src/chdkptp/chdkptp.sh /usr/local/bin/chdkptp
 fi
+
 if [[ $available == 0 ]]
     then echo chdkptp found
 fi
-
 
 
 

@@ -14,4 +14,5 @@ ok pip3 python-consul
 ok pip3 gphoto2
 ok pip3 Jinja2
 ok pip3 tesserocr
+pip3 install https://github.com/galencm/machinic-primitives-sources/zipball/master
 
