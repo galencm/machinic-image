@@ -47,28 +47,28 @@
     <peripheral type = "slurp" method = "generic" source = "BYTEBOOOK" name = "capture1" position = "-1">
         <input source = "/1">
             <call>create_glworb</call>
-            <argument>capture1</argument>
+            <argument value = "capture1" />
         </input>
     </peripheral>
 
     <peripheral type = "slurp" method = "generic" source = "BYTEBOOOK" name = "capture2" position = "0">
         <input source="/2">
             <call>create_glworb</call>
-            <argument>capture2</argument>
+            <argument value = "capture2" />
         </input>
     </peripheral>
 
     <peripheral type = "slurp" method = "gphoto2" name = "capture3" source = "">
         <input source = "/1">
             <call>create_glworb</call>
-            <argument>capture3</argument>
+            <argument value = "capture3" />
         </input>
     </peripheral>
 
     <peripheral type = "slurp" method = "gphoto2" name = "capture4" source = "">
         <input source = "/2">
             <call>create_glworb</call>
-            <argument>capture4</argument>
+            <argument value = "capture4" />
         </input>
     </peripheral>
 
