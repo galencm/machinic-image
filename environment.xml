@@ -15,6 +15,7 @@
     <include name="gphoto2" system="python3" />
     <include name="Jinja2" system="python3" />
     <include name="tesserocr" system="python3" />
+    <include name="sourceprimitives" url="https://github.com/galencm/machinic-primitives-sources/zipball/master" system="python3" />
 
     <!-- linux_x86_64 
         x86_64 
