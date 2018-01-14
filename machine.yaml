@@ -7,25 +7,23 @@ aliases:
 
 includes:
  - devise.py:
-    duplicates: True
-    checks: [gphoto2]
- - source_indexable.py:
-    rpc: False
-    name: bar
-    args: [--source-name,bar,--source,boook]
+    allow-duplicates: True
+    checks: []
+ - pipeline_image.py:
+ - primitives-source-indexable:
+    auto-wireup: True
+    location: path
+    name: byteboook
+    args: [--source-name,BYTEBOOOK,--source,boook]
 
 routes:
  - "if '/1' do create_glworb capture1"
  - "if '/2' do create_glworb capture2"
- - "if '/bar' do create_glworb capture3"
+ - "if '/1' do create_glworb capture3"
+ - "if '/2' do create_glworb capture4"
 
 pipes:
  - >
-  pipe thing {
-      starti
-      rotate stuff: rotate 90
-      endi
-  }
 
 rules:
  - [numeral,['ocr_results','int'],['image_binary_key','str']]
@@ -36,6 +34,6 @@ rules:
 prepare:
 
 set:
- - BAR:
+ - BYTEBOOOK:
    - marker:capture1: -1
    - marker:capture2: 0
