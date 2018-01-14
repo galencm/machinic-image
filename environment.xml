@@ -34,9 +34,9 @@
             destination="/usr/local/bin"
             command="local copy"
     />
-    <include name="gphoto-check"
+    <include name="check_gphoto"
             system="linux_arm"
-            url="gphoto_check"
+            url="check_gphoto"
             destination="/usr/local/bin"
             command="local copy"
     />    
