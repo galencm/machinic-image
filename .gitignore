@@ -7,3 +7,4 @@ restart.sh
 #python
 __pycache__/
 *.py[cod]
+.cache
