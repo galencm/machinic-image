@@ -3,7 +3,7 @@
 
     <!-- includes -->
 
-    <include file = "devise.py" duplicates = "false"><check name = "gphoto2" /></include>
+    <include file = "devise.py" duplicates = "true"><check name = "gphoto2" /></include>
 
     <include file = "pipeline_image.py" />
 
@@ -82,7 +82,10 @@
 
     <!-- sources -->
 
-    <source type="primitive_bytes_indexable" source="boook" location="BYTEBOOOK" wireup = "true" />
+    <source type="primitive_bytes_indexable" source="boook" location="BYTEBOOOK" wireup = "true">
+        <set peripheral="capture1" symbol="marker" value="-1" overwrite="true" />
+        <set peripheral="capture2" symbol="marker" value="0" overwrite="true" />
+    </source>
 
     <!-- rules -->
 
