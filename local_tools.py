@@ -102,6 +102,6 @@ def lookup_machine(machine_yaml_file,ignored_services=None):
         if k in include_names and k not in ignored_services:
             #assert v == "running"
             print("{} {}".format(k,v))
-            snapshot[k] = v
+            machine_scheduled_snapshot[k] = v
 
     return machine_scheduled_snapshot
