@@ -81,20 +81,31 @@ def lookup_machine(machine_yaml_file,ignored_services=None):
         for include,include_properties in includes.items():
             # use name property if available, otherwise
             # name will be key
+            service_prefix = ""
+            # as-rpc services will be prefixed with zerorpc-
+            # prefix name from yaml to correctly match service
             try:
-                include_names.add(include_properties['name'])
+                if include_properties['as-rpc'] is True:
+                    service_prefix = "zerorpc-"
+            except:
+                pass
+
+            try:
+                include_names.add(service_prefix+include_properties['name'])
             except:
                 # currently external file properties
                 # are not available via yaml, 
                 # so the name chop off .hcl and see
-                #
                 # machine.py removes .py ending?
+                #
+                # replace underscores with dashes to reflect
+                # replacement done to scheduled jobs
                 if include.endswith(".hcl"):
-                    include_names.add(include[:-4])
+                    include_names.add(service_prefix+include[:-4].replace("_","-"))
                 elif include.endswith(".py"):
-                    include_names.add(include[:-3])
+                    include_names.add(service_prefix+include[:-3].replace("_","-"))
                 else:
-                    include_names.add(include)
+                    include_names.add(service_prefix+include.replace("_","-"))
 
     #assert include_names.issubset(set(nomad_jobs.keys()))
     machine_scheduled_snapshot = {k:None for k in set(include_names)-set(ignored_services)}
