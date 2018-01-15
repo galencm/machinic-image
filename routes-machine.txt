@@ -1,0 +1,4 @@
+if '/1' do create_glworb capture1
+if '/2' do create_glworb capture2
+if '/1' do create_glworb capture3
+if '/2' do create_glworb capture4
