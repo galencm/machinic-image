@@ -9,7 +9,6 @@ includes:
  - devise.py:
     allow-duplicates: True
     checks: []
- - pipeline_image.py:
  - primitives-source-indexable:
     auto-wireup: True
     location: path
