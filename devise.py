@@ -58,8 +58,9 @@ def FlexibleObj(fields,obj_type=None,return_obj=None):
 
     if obj_type:
         #type_attributes = [s for s in return_obj.__dict__.keys() if not s.startswith("_")]
-        type_attributes = [s for s in obj_type.__dict__.keys() if not s.startswith("_")]
-        logger.debug("{} {}".format(obj_type,type_attributes))
+        type_attributes = [s for s in obj_type().__dict__.keys() if not s.startswith("_")]
+        #type_attributes = [s for s in obj_type.__dict__.keys() if not s.startswith("_")]
+        logger.debug("obj: {} attributes: {}".format(obj_type,type_attributes))
         pruned_attributes = {key: fields[key] for key in fields if key in type_attributes}
     else:
         pruned_attributes = fields
