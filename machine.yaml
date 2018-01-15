@@ -7,7 +7,8 @@ aliases:
 
 includes:
  - devise.py:
-    allow-duplicates: True
+    auto-wireup: True
+    as-rpc: True
     checks: []
  - primitives-source-indexable:
     auto-wireup: True
