@@ -5,8 +5,6 @@
 
     <include file = "devise.py" duplicates = "true"><check name = "gphoto2" /></include>
 
-    <include file = "pipeline_image.py" />
-
     <!-- sequences -->
     <!--
     <sequence name="thing">
