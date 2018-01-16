@@ -1,6 +1,6 @@
 # Generated permutations and partial map
 
-[partial map][rel-map-svg]
+![partial map][rel-map-svg]
 
 [rel-map-svg]: permutations.svg?sanitize=true
 
