@@ -150,4 +150,6 @@ DESTsetBYTEBOOOKmarkercapture1[label="/set/BYTEBOOOK/marker:capture1"]
 button210 -> DESTsetBYTEBOOOKmarkercapture1 [label="+=2"]
 DESTsetBYTEBOOOKmarkercapture2[label="/set/BYTEBOOOK/marker:capture2"]
 button210 -> DESTsetBYTEBOOOKmarkercapture2 [label="+ = 2"]
+labelloc="t";
+label="machine.xml@8b6b476274bb2055b36e44660b3d5b3782f0fbfa";
 }
