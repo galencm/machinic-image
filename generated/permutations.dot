@@ -1,0 +1,146 @@
+digraph permutations {
+node [weight = 0.25];
+nodesep=0.5
+reality[label="reality",color="red"]
+BYTEBOOOK[label="BYTEBOOOK",color="red"]
+viewer_gui_kv_py_gsl[label="viewer-gui-kv.py.gsl", style="dotted",fontcolor="gray"]
+
+viewer00[label="viewer-gui-kv.py.gsl-0"]
+viewer_gui_kv_py_gsl -> viewer00 [label="generates", style="dotted",fontcolor="gray"]
+capture1 -> viewer00 [label="filter"]
+viewer_terminal_cli_py_gsl[label="viewer-terminal-cli.py.gsl", style="dotted",fontcolor="gray"]
+
+viewer10[label="viewer-terminal-cli.py.gsl-0"]
+viewer_terminal_cli_py_gsl -> viewer10 [label="generates", style="dotted",fontcolor="gray"]
+capture1 -> viewer10 [label="filter"]
+viewer_gui_kv_py_gsl[label="viewer-gui-kv.py.gsl", style="dotted",fontcolor="gray"]
+
+viewer01[label="viewer-gui-kv.py.gsl-1"]
+viewer_gui_kv_py_gsl -> viewer01 [label="generates", style="dotted",fontcolor="gray"]
+capture2 -> viewer01 [label="filter"]
+viewer_terminal_cli_py_gsl[label="viewer-terminal-cli.py.gsl", style="dotted",fontcolor="gray"]
+
+viewer11[label="viewer-terminal-cli.py.gsl-1"]
+viewer_terminal_cli_py_gsl -> viewer11 [label="generates", style="dotted",fontcolor="gray"]
+capture2 -> viewer11 [label="filter"]
+viewer_gui_kv_py_gsl[label="viewer-gui-kv.py.gsl", style="dotted",fontcolor="gray"]
+
+viewer02[label="viewer-gui-kv.py.gsl-2"]
+viewer_gui_kv_py_gsl -> viewer02 [label="generates", style="dotted",fontcolor="gray"]
+capture3 -> viewer02 [label="filter"]
+viewer_terminal_cli_py_gsl[label="viewer-terminal-cli.py.gsl", style="dotted",fontcolor="gray"]
+
+viewer12[label="viewer-terminal-cli.py.gsl-2"]
+viewer_terminal_cli_py_gsl -> viewer12 [label="generates", style="dotted",fontcolor="gray"]
+capture3 -> viewer12 [label="filter"]
+viewer_gui_kv_py_gsl[label="viewer-gui-kv.py.gsl", style="dotted",fontcolor="gray"]
+
+viewer03[label="viewer-gui-kv.py.gsl-3"]
+viewer_gui_kv_py_gsl -> viewer03 [label="generates", style="dotted",fontcolor="gray"]
+capture4 -> viewer03 [label="filter"]
+viewer_terminal_cli_py_gsl[label="viewer-terminal-cli.py.gsl", style="dotted",fontcolor="gray"]
+
+viewer13[label="viewer-terminal-cli.py.gsl-3"]
+viewer_terminal_cli_py_gsl -> viewer13 [label="generates", style="dotted",fontcolor="gray"]
+capture4 -> viewer13 [label="filter"]
+button_gui_kv_py_gsl[label="button-gui-kv.py.gsl", style="dotted",fontcolor="gray"]
+
+button04[label="button-gui-kv.py.gsl-4"]
+button_gui_kv_py_gsl -> button04 [label="generates", style="dotted",fontcolor="gray"]
+DEST1[label="/1"]
+button04 -> DEST1 [label="1"]
+button_terminal_curt_py_gsl[label="button-terminal-curt.py.gsl", style="dotted",fontcolor="gray"]
+
+button14[label="button-terminal-curt.py.gsl-4"]
+button_terminal_curt_py_gsl -> button14 [label="generates", style="dotted",fontcolor="gray"]
+DEST1[label="/1"]
+button14 -> DEST1 [label="1"]
+button_iot_hmi_c_gsl[label="button-iot-hmi.c.gsl", style="dotted",fontcolor="gray"]
+
+button24[label="button-iot-hmi.c.gsl-4"]
+button_iot_hmi_c_gsl -> button24 [label="generates", style="dotted",fontcolor="gray"]
+DEST1[label="/1"]
+button24 -> DEST1 [label="1"]
+button_gui_kv_py_gsl[label="button-gui-kv.py.gsl", style="dotted",fontcolor="gray"]
+
+button05[label="button-gui-kv.py.gsl-5"]
+button_gui_kv_py_gsl -> button05 [label="generates", style="dotted",fontcolor="gray"]
+DEST2[label="/2"]
+button05 -> DEST2 [label="1"]
+button_terminal_curt_py_gsl[label="button-terminal-curt.py.gsl", style="dotted",fontcolor="gray"]
+
+button15[label="button-terminal-curt.py.gsl-5"]
+button_terminal_curt_py_gsl -> button15 [label="generates", style="dotted",fontcolor="gray"]
+DEST2[label="/2"]
+button15 -> DEST2 [label="1"]
+button_iot_hmi_c_gsl[label="button-iot-hmi.c.gsl", style="dotted",fontcolor="gray"]
+
+button25[label="button-iot-hmi.c.gsl-5"]
+button_iot_hmi_c_gsl -> button25 [label="generates", style="dotted",fontcolor="gray"]
+DEST2[label="/2"]
+button25 -> DEST2 [label="1"]
+slurp_term_cli_py_gsl[label="slurp-term-cli.py.gsl", style="dotted",fontcolor="gray"]
+capture1[label="capture1
+slurp
+BYTEBOOOK
+generic"]
+BYTEBOOOK -> capture1 [color="red"]
+
+slurp06[label="slurp-term-cli.py.gsl-6"]
+slurp_term_cli_py_gsl -> slurp06 [label="generates", style="dotted",fontcolor="gray"]
+DEST1 -> capture1 [label="create_glworb capture1"]
+slurp_term_cli_py_gsl[label="slurp-term-cli.py.gsl", style="dotted",fontcolor="gray"]
+capture2[label="capture2
+slurp
+BYTEBOOOK
+generic"]
+BYTEBOOOK -> capture2 [color="red"]
+
+slurp07[label="slurp-term-cli.py.gsl-7"]
+slurp_term_cli_py_gsl -> slurp07 [label="generates", style="dotted",fontcolor="gray"]
+DEST2 -> capture2 [label="create_glworb capture2"]
+slurp_term_cli_py_gsl[label="slurp-term-cli.py.gsl", style="dotted",fontcolor="gray"]
+capture3[label="capture3
+slurp
+
+gphoto2"]
+reality -> capture3 [color="red"]
+
+slurp08[label="slurp-term-cli.py.gsl-8"]
+slurp_term_cli_py_gsl -> slurp08 [label="generates", style="dotted",fontcolor="gray"]
+DEST1 -> capture3 [label="create_glworb capture3"]
+slurp_term_cli_py_gsl[label="slurp-term-cli.py.gsl", style="dotted",fontcolor="gray"]
+capture4[label="capture4
+slurp
+
+gphoto2"]
+reality -> capture4 [color="red"]
+
+slurp09[label="slurp-term-cli.py.gsl-9"]
+slurp_term_cli_py_gsl -> slurp09 [label="generates", style="dotted",fontcolor="gray"]
+DEST2 -> capture4 [label="create_glworb capture4"]
+button_gui_kv_py_gsl[label="button-gui-kv.py.gsl", style="dotted",fontcolor="gray"]
+
+button010[label="button-gui-kv.py.gsl-10"]
+button_gui_kv_py_gsl -> button010 [label="generates", style="dotted",fontcolor="gray"]
+DESTsetBYTEBOOOKmarkercapture1[label="/set/BYTEBOOOK/marker:capture1"]
+button010 -> DESTsetBYTEBOOOKmarkercapture1 [label="+=2"]
+DESTsetBYTEBOOOKmarkercapture2[label="/set/BYTEBOOOK/marker:capture2"]
+button010 -> DESTsetBYTEBOOOKmarkercapture2 [label="+ = 2"]
+button_terminal_curt_py_gsl[label="button-terminal-curt.py.gsl", style="dotted",fontcolor="gray"]
+
+button110[label="button-terminal-curt.py.gsl-10"]
+button_terminal_curt_py_gsl -> button110 [label="generates", style="dotted",fontcolor="gray"]
+DESTsetBYTEBOOOKmarkercapture1[label="/set/BYTEBOOOK/marker:capture1"]
+button110 -> DESTsetBYTEBOOOKmarkercapture1 [label="+=2"]
+DESTsetBYTEBOOOKmarkercapture2[label="/set/BYTEBOOOK/marker:capture2"]
+button110 -> DESTsetBYTEBOOOKmarkercapture2 [label="+ = 2"]
+button_iot_hmi_c_gsl[label="button-iot-hmi.c.gsl", style="dotted",fontcolor="gray"]
+
+button210[label="button-iot-hmi.c.gsl-10"]
+button_iot_hmi_c_gsl -> button210 [label="generates", style="dotted",fontcolor="gray"]
+DESTsetBYTEBOOOKmarkercapture1[label="/set/BYTEBOOOK/marker:capture1"]
+button210 -> DESTsetBYTEBOOOKmarkercapture1 [label="+=2"]
+DESTsetBYTEBOOOKmarkercapture2[label="/set/BYTEBOOOK/marker:capture2"]
+button210 -> DESTsetBYTEBOOOKmarkercapture2 [label="+ = 2"]
+}
