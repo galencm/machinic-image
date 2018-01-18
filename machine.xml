@@ -5,6 +5,8 @@
 
     <include file = "devise.py" rpc = "true" wireup = "true" ><check name = "gphoto2" /></include>
 
+    <include file = "img_pipe.py" rpc = "true" wireup = "true" />
+
     <!-- sequences -->
     <!--
     <sequence name="thing">
