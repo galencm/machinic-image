@@ -113,8 +113,19 @@ def img_rotate(context, rotation,*args):
             dict
     """
     
-    with open_image(context['uuid'],context['key']) as img:
-        img = img.rotate(float(rotation),expand=True)
+    # use open_bytes instead of open_image
+    # because yielded image does not seem
+    # to be mutated despite img = img.rotate
+
+    with open_bytes(context['uuid'],context['key']) as img:
+        image = Image.open(img)
+        ext = image.format
+        image = image.rotate(float(rotation),expand=True)
+        img.seek(0)
+        image.save(img,ext)
+
+    # with open_image(context['uuid'],context['key']) as img:
+    #     img = img.rotate(float(rotation),expand=True)
 
     return context
 
