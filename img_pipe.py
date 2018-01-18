@@ -116,7 +116,7 @@ def img_rotate(context, rotation,*args):
     with open_image(context['uuid'],context['key']) as img:
         img = img.rotate(float(rotation),expand=True)
 
-    return gs
+    return context
 
 def img_crop_inplace(context,x1,y1,w,h,*args):
     """Crop in place
