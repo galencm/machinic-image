@@ -242,6 +242,15 @@ def img_ocr(context,to_key,*args):
         r.hset(context['uuid'],to_key,image_to_text(img))
     return context
 
+def img_ocr_rectangle(context,to_key,left,top,width,height,*args):
+    with PyTessBaseAPI() as api:
+        with open_image(context['uuid'],context['key']) as img:
+            api.SetImage(img)
+            api.SetRectangle(left, top, width, height)
+            result = api.GetUTF8Text()
+            logger.info(result)
+            r.hset(context['uuid'],to_key,result)
+
 def img_ocr_boxes(context,to_key,*args):
     with PyTessBaseAPI() as api:
         with open_image(context['uuid'],context['key']) as img:
