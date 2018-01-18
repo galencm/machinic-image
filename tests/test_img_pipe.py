@@ -9,6 +9,7 @@ import local_tools
 import img_pipe
 import uuid
 import redis
+import subprocess
 
 @pytest.fixture(scope='session')
 def redis_binary_conn():
@@ -54,6 +55,35 @@ def glworb(redis_conn,redis_binary_conn,glworb_image):
     #cleanup
     redis_conn.delete(glworb_key)
     assert redis_conn.get(glworb_key) is None
+
+@pytest.fixture(scope='session')
+def ocr_pipe(redis_conn):
+    pipe_name = "pytest_ocr"
+    pipe = """
+        pipe pytest_ocr {
+            img_ocr ocr_test
+        }
+    """.replace("\n"," ")
+    subprocess.call(["lings-pipe-add","--pipe",pipe])
+    assert 'None' not in subprocess.check_output(["lings-pipe-get","--name",pipe_name]).decode()
+    yield pipe_name
+    subprocess.call(["lings-pipe-remove","--pipe",pipe])
+    assert 'None' in subprocess.check_output(["lings-pipe-get","--name",pipe_name]).decode()
+
+@pytest.fixture(scope='session')
+def rotate_pipe(redis_conn):
+    pipe_name = "pytest_rotate"
+    pipe = """
+        pipe pytest_rotate {
+            img_rotate 90
+            img_ocr ocr_test
+        }
+    """.replace("\n"," ")
+    subprocess.call(["lings-pipe-add","--pipe",pipe])
+    assert 'None' not in subprocess.check_output(["lings-pipe-get","--name",pipe_name]).decode()
+    yield pipe_name
+    subprocess.call(["lings-pipe-remove","--pipe",pipe])
+    assert 'None' in subprocess.check_output(["lings-pipe-get","--name",pipe_name]).decode()
 
 @pytest.fixture(scope='session')
 def context(glworb):
@@ -111,3 +141,6 @@ def ztest_img_rotation(context,glworb,redis_conn):
 
     # second img_orientation call fails 
     # if using rotations 67,-67
+
+def test_pipe(ocr_pipe):
+    assert ocr_pipe
