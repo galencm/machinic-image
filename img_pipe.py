@@ -75,7 +75,7 @@ def img_show(context,*args):
         img.show()
     return context
 
-def img_overlay(context, text, x, y, *args):
+def img_overlay(context, text, x, y, fontsize, *args):
     """Rotate in place
 
         Args:
@@ -92,8 +92,12 @@ def img_overlay(context, text, x, y, *args):
 
     with open_image(context['uuid'],context['key']) as img:
         draw = ImageDraw.Draw(img)
-        font = ImageFont.truetype("FreeSerif.ttf", 90)
-        draw.text((x, y),text,(255,255,255),font=font) 
+        try:
+            font = ImageFont.truetype("FreeSerif.ttf", fontsize)
+            draw.text((x, y),text,(255,255,255),font=font)
+        except:
+            font = ImageFont.truetype("/usr/share/fonts/truetype/freefont/FreeSerif.ttf", fontsize)
+            draw.text((x, y),text,(255,255,255),font=font)
 
     return context
 
