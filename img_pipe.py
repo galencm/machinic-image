@@ -227,7 +227,8 @@ def img_ocr(context,to_key,*args):
     """
     with open_image(context['uuid'],context['key']) as img:
         logger.info(image_to_text(img))
-
+        # r redis conn basically global
+        r.hset(context['uuid'],to_key,image_to_text(img))
     return context
 
 def img_ocr_boxes(context,to_key,*args):
