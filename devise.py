@@ -9,7 +9,6 @@ import os
 import sys
 from discover import discover,GenericDevice
 from capture import capture
-import attr
 import redis
 import itertools
 import uuid
@@ -28,38 +27,6 @@ r_ip,r_port = local_tools.lookup('redis')
 r = redis.StrictRedis(host=r_ip, port=str(r_port),decode_responses=True)
 binary_r = redis.StrictRedis(host=r_ip, port=str(r_port))
 
-def FlexibleObj(fields,obj_type=None,return_obj=None):
-    """Provided a dictionary of values and a desired return type. Prune fields to match those in desired type and return populated type.
-
-        Args:
-            fields(dict): A dictionary
-            obj_type(): Type of object to prune against
-            return_obj(str): Type of class to return as populated object. Defaults to dict
-        
-        Keyword Args:
-            asdict(bool): If True, return a dictionary instead of object. Defaults to False
-        
-        Returns:
-            (obj): populated with intersecting fields.
-
-    """
-    if return_obj is None:
-        return_obj = dict
-
-    if obj_type:
-        #type_attributes = [s for s in return_obj.__dict__.keys() if not s.startswith("_")]
-        type_attributes = [s for s in obj_type().__dict__.keys() if not s.startswith("_")]
-        #type_attributes = [s for s in obj_type.__dict__.keys() if not s.startswith("_")]
-        logger.debug("obj: {} attributes: {}".format(obj_type,type_attributes))
-        pruned_attributes = {key: fields[key] for key in fields if key in type_attributes}
-    else:
-        pruned_attributes = fields
-
-    if return_obj is dict:
-        return pruned_attributes
-    else:
-        return return_obj(**pruned_attributes)
-
 def update_devices(*args,**kwargs):
     """Discover devices and update db.
         Adjust foundnow and lastseen for all devices in db
@@ -68,6 +35,7 @@ def update_devices(*args,**kwargs):
             devices: a list of Devices 
             errors: a list of strings 
     """
+    # update on usb plug/unplug...
     return_obj=dict
     #rpc hack?
     try:
@@ -100,7 +68,7 @@ def update_devices(*args,**kwargs):
             #empty string will be considered False by graphene
             #sets foundnow to False 
             r.hset(d,"foundnow","") 
-        devs.append(FlexibleObj(r.hgetall(d),obj_type=GenericDevice,return_obj=return_obj))
+        devs.append(r.hgetall(d))
     logger.info("devices: {}, errors: {}".format(devs,errs))
     return devs,errs
 
@@ -144,7 +112,6 @@ def create_glworb(uids):
         for dev in creating_sources:
             logger.info("capturing for: ".format(dev))
             dev_data = r.hgetall(dev)
-            dev_data =  FlexibleObj(dev_data,return_obj=GenericDevice)
             method = dev_data.discovery_method
 
             try:
@@ -162,7 +129,7 @@ def create_glworb(uids):
                 glworb_fields['method'] = method
                 glworb_fields['uuid'] = guuid
 
-                glworb = FlexibleObj(glworb_fields,return_obj=dict)
+                glworb = glworb_fields
                 write_glworb(dev_data.uid, guuid, glworb)
                 glworbs.append(glworb)
 
@@ -170,4 +137,4 @@ def create_glworb(uids):
 
 @route_broadcast(channel=source, message=uuid)
 def write_glworb(source, uuid, glworb):
-    r.hmset("glworb:{}".format(guuid),FlexibleObj(glworb_fields,return_obj=dict))
+    r.hmset("glworb:{}".format(guuid),glworb_fields)
