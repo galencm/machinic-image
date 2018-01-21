@@ -15,15 +15,15 @@ import itertools
 import uuid
 from logzero import logger
 import logzero
+import redis
+import consul
+from lings.routeling import route_broadcast
+
 try:
     logzero.logfile("/tmp/{}.log".format(os.path.basename(sys.argv[0])))
 except Exception as ex:
     logger.warn(ex)
 
-
-
-import redis
-import consul
 def lookup(service):
     c = consul.Consul()
     services = {k:v for (k,v) in c.agent.services().items() if k.startswith("_nomad")}
@@ -69,9 +69,6 @@ def FlexibleObj(fields,obj_type=None,return_obj=None):
         return pruned_attributes
     else:
         return return_obj(**pruned_attributes)
-
-def test():
-    return discover()
 
 def update_devices(*args,**kwargs):
     """Discover devices and update db.
@@ -144,9 +141,8 @@ def create_glworb(uids):
     errors = []
     devs,errs = update_devices()
     errors.extend(errs)
-    #base64?
-    #glworbs = Glworbs()
-    g = []
+
+    glworbs = []
     matches = []
     for source in uids:
         matched = r.scan_iter("device:*{}*".format(source))
@@ -154,42 +150,34 @@ def create_glworb(uids):
         #create a single iterator from redis-result generators
         creating_sources = itertools.chain(*matches)
 
-        print("creating sources are",creating_sources)
-        for i,d in enumerate(creating_sources):
-            print(i,"capturing for,",d)
-            dd = r.hgetall(d)
-            dd =  FlexibleObj(dd,return_obj=GenericDevice)
-            method = dd.discovery_method
+        logger.info("creating sources: {}".format(creating_sources))
+        for dev in creating_sources:
+            print(i,"capturing for,",dev)
+            dev_data = r.hgetall(dev)
+            dev_data =  FlexibleObj(dev_data,return_obj=GenericDevice)
+            method = dev_data.discovery_method
 
             try:
-                keys,err = capture(method,dd)
+                keys,err = capture(method,dev_data)
             except Exception as ex:
                 print(ex)
                 errors.append(ex)
 
             errors.extend(err)
-            print("LKEYS",keys)
             for k in keys:
-                print("?????",k)
                 guuid = str(uuid.uuid4())
-                glworb_fields = attr.asdict(dd)
+                glworb_fields = attr.asdict(dev_data)
                 glworb_fields['image_binary_key'] = k
                 glworb_fields['source_uid'] = glworb_fields['uid']
                 glworb_fields['method'] = method
                 glworb_fields['uuid'] = guuid
-                print("published on",dd.name+dd.uid)
-                #r.publish(dd.name+dd.uid, k)
-                r.publish(dd.uid, guuid)
+
                 glworb = FlexibleObj(glworb_fields,return_obj=dict)
-                r.hmset("glworb:{}".format(guuid),FlexibleObj(glworb_fields,return_obj=dict))
-                g.append(glworb)
+                write_glworb(dev_data.uid, guuid, glworb)
+                glworbs.append(glworb)
 
-    #glworbs.glworbs = g
-
-    #errors = [s for s in errors]
-    #return CreateGlworb(glworbs=glworbs,errors=errors)    
     return [g,errors]
-    #return [g,errors]
 
-if __name__ == "__main__":
-    print(update_devices())
+@route_broadcast(channel=source, message=uuid)
+def write_glworb(source, uuid, glworb):
+    r.hmset("glworb:{}".format(guuid),FlexibleObj(glworb_fields,return_obj=dict))
