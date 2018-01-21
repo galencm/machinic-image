@@ -12,6 +12,7 @@ from contextlib import contextmanager
 from PIL import Image, ImageDraw, ImageFont
 from tesserocr import PyTessBaseAPI, PSM, image_to_text, OEM, RIL
 from logzero import logger
+from lings.routeling import route_broadcast
 
 def lookup(service):
     c = consul.Consul()
@@ -61,6 +62,7 @@ def write_bytes(hash_uuid,key,write_bytes,key_prefix=""):
     binary_r.set(bytes_key, write_bytes)
     r.hset(hash_uuid,key,bytes_key)
 
+@route_broadcast(channel='{function}',payload='context')
 def img_show(context,*args):
     """Display image
 
@@ -76,7 +78,7 @@ def img_show(context,*args):
     return context
 
 def img_overlay(context, text, x, y, fontsize, *args):
-    """Rotate in place
+    """Overlay text
 
         Args:
             context(dict): dictionary of context info
