@@ -152,7 +152,7 @@ def create_glworb(uids):
 
         logger.info("creating sources: {}".format(creating_sources))
         for dev in creating_sources:
-            print(i,"capturing for,",dev)
+            logger.info("capturing for: ".format(dev))
             dev_data = r.hgetall(dev)
             dev_data =  FlexibleObj(dev_data,return_obj=GenericDevice)
             method = dev_data.discovery_method
