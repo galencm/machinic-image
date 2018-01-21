@@ -23,15 +23,15 @@ def discover_primitive_generic():
 
     return camera_list,errors
 
-def slurp_primitive_generic(generic_device):
+def slurp_primitive_generic(device):
 
-    source = r.get("primitive_generic:{}".format(generic_device.name))
+    source = r.get("primitive_generic:{}".format(device['name']))
     source_ip,source_port = local_tools.lookup(source)
 
     zc = zerorpc.Client()
     zc.connect("tcp://{}:{}".format(source_ip,source_port))
     #result = zc('source')
-    result = zc('source',generic_device.name)    
+    result = zc('source',device['name'])    
     gluuid = str(uuid.uuid4())
     binary_key = "glworb_binary:"+gluuid
     binary_r.set(binary_key, result)
