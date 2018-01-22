@@ -62,7 +62,7 @@ def write_bytes(hash_uuid,key,write_bytes,key_prefix=""):
     binary_r.set(bytes_key, write_bytes)
     r.hset(hash_uuid,key,bytes_key)
 
-@route_broadcast(channel='{function}',payload='context')
+@route_broadcast(channel='{function}',message='context')
 def img_show(context,*args):
     """Display image
 
