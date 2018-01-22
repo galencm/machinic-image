@@ -3,9 +3,9 @@
 
     <!-- includes -->
 
-    <include file = "devise.py" rpc = "true" wireup = "true" ><check name = "gphoto2" /></include>
-
     <include file = "img_pipe.py" rpc = "true" wireup = "true" />
+
+    <include file = "SlurpGphoto2.py" rpc = "true" wireup = "true"><argument value="--class-file"/></include>
 
     <!-- sequences -->
     <!--

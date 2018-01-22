@@ -6,13 +6,13 @@ aliases:
 
 
 includes:
- - devise.py:
-    auto-wireup: True
-    as-rpc: True
-    checks: []
  - img_pipe.py:
     auto-wireup: True
     as-rpc: True
+ - SlurpGphoto2.py:
+    auto-wireup: True
+    as-rpc: True
+    args: [--class-file]
  - primitives-source-indexable:
     auto-wireup: True
     location: path
