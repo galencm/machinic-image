@@ -5,7 +5,7 @@
 
     <include file = "img_pipe.py" rpc = "true" wireup = "true" />
 
-    <include file = "SlurpGphoto2.py" rpc = "true" wireup = "true"><argument value="--class-file"/></include>
+    <include file = "slurp_gphoto2.py" class = "SlurpGphoto2" rpc = "true" wireup = "true" />
 
     <!-- sequences -->
     <!--

@@ -9,10 +9,10 @@ includes:
  - img_pipe.py:
     auto-wireup: True
     as-rpc: True
- - SlurpGphoto2.py:
+ - slurp_gphoto2.py:
     auto-wireup: True
     as-rpc: True
-    args: [--class-file]
+    use-class: SlurpGphoto2
  - primitives-source-indexable:
     auto-wireup: True
     location: path
