@@ -13,18 +13,9 @@ from PIL import Image, ImageDraw, ImageFont
 from tesserocr import PyTessBaseAPI, PSM, image_to_text, OEM, RIL
 from logzero import logger
 from lings.routeling import route_broadcast
+import local_tools
 
-def lookup(service):
-    c = consul.Consul()
-    services = {k:v for (k,v) in c.agent.services().items() if k.startswith("_nomad")}
-    for k in services.keys():
-        if services[k]['Service'] == service:
-                service_ip,service_port = services[k]['Address'],services[k]['Port']
-                return service_ip,service_port
-                break
-    return None,None
-
-r_ip,r_port = lookup('redis')
+r_ip,r_port = local_tools.lookup('redis')
 r = redis.StrictRedis(host=r_ip, port=str(r_port),decode_responses=True)
 binary_r = redis.StrictRedis(host=r_ip, port=str(r_port))
 
