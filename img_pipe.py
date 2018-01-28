@@ -122,6 +122,54 @@ def img_rotate(context, rotation,*args):
 
     return context
 
+def img_grid(context, xspacing=100, yspacing=100, r=255, g=255, b=255, a=127, label=True, *args, **kwargs):
+    """Grid over image
+
+        Args:
+            context(dict): dictionary of context info
+            xspacing(int): column spacing
+            yspacing(float): row spacing
+            r(int): red
+            g(int): green
+            b(int): blue
+            a(int): alpha
+            label(str): label grid squares and intersections
+
+            *args:
+            **kwargs:
+        Returns:
+            dict
+    """
+    xspacing = int(xspacing)
+    yspacing = int(yspacing)
+    r = int(r)
+    g = int(g)
+    b = int(b)
+    a = int(a)
+
+    with open_image(context['uuid'],context['key']) as img:
+        draw = ImageDraw.Draw(img)
+        imgw,imgh = img.size
+
+        for col in range(0,imgw,xspacing):
+            draw.line((col,0,col,imgh), fill=(r,g,b))
+
+        for row in range(0,imgh,yspacing):
+            draw.line((0,row,imgw,row), fill=(r,g,b))
+
+        if label:
+            grid_number = 0
+            for col in range(0,imgw,xspacing):
+                for row in range(0,imgh,yspacing):
+                    draw.text((col, row),str("({}, {})".format(col,row)),(255,255,255))
+                    grid_label = str("{}".format(grid_number))
+                    w, h = draw.textsize(grid_label)
+                    tx = int(round(col+(xspacing/2)-(w/2)))
+                    ty = int(round(row+(yspacing/2)-(h/2)))
+                    draw.text((tx, ty), grid_label, (255,255,255))
+                    grid_number +=1
+    return context
+
 def img_crop_inplace(context,x1,y1,w,h,*args):
     """Crop in place
 
