@@ -291,16 +291,14 @@ def img_ocr_rectangle(context,to_key,left,top,width,height,*args):
             result = api.GetUTF8Text()
             logger.info(result)
             r.hset(context['uuid'],to_key,result)
+            logger.info("setting {} field {} to {}".format(context['uuid'],to_key,result))
             # store rectangle information in separate
             # key to allow reconstruction of geometry
             # of the ocr region
-            ocr_info_key = "ocr-rectangle_{key}".format(key=to_key)
-            r.hset(context['uuid'],ocr_info_key,",".join([str(s) for s in
-                                                            [left,
-                                                             top,
-                                                             width,
-                                                             height]
-                                                          ]))
+            ocr_info_key = "region_ocr-rectangle_{key}".format(key=to_key)
+            ocr_geometry = ",".join([str(s) for s in[left, top, width, height]])
+            r.hset(context['uuid'], ocr_info_key, ocr_geometry)
+            logger.info("setting {} field {} to {}".format(context['uuid'], ocr_info_key, ocr_geometry))
 
 def img_ocr_boxes(context,to_key,*args):
     with PyTessBaseAPI() as api:
