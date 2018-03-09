@@ -78,14 +78,21 @@
         </input>
     </peripheral>
 
-    <peripheral type = "button" alternative_press = " " description = "simulate turning page">
-        <output type = "integer" value = "+=2" destination = "/set/BYTEBOOOK/marker:capture1" />
+    <peripheral type = "button" alternative_press = " " description = "increment pages, simulate turning pages towards end">
+        <output type = "integer" value = "+= 2" destination = "/set/BYTEBOOOK/marker:capture1" />
         <output type="integer" value="+= 2" destination = "/set/BYTEBOOOK/marker:capture2" />
         <!--
             create inside of source to allow programmatic creation of name in /set/<name>/<slurp>?
         -->
     </peripheral>
 
+    <peripheral type = "button" alternative_press = " " description = "decrement pages, simulate turning pages towards beginning">
+        <output type = "integer" value = "-= 2" destination = "/set/BYTEBOOOK/marker:capture1" />
+        <output type="integer" value="-= 2" destination = "/set/BYTEBOOOK/marker:capture2" />
+        <!--
+            create inside of source to allow programmatic creation of name in /set/<name>/<slurp>?
+        -->
+    </peripheral>
     <!-- sources -->
 
     <source type="primitive_bytes_indexable" source="boook" location="BYTEBOOOK" wireup = "true">
