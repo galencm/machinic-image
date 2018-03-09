@@ -13,11 +13,11 @@ void loopHandler() {
     if ( digitalRead ( debouncer.read() ) == LOW ){
     //if ( digitalRead ( PIN_BUTTON ) == LOW ){
       Serial.print("/set/BYTEBOOOK/marker:capture1");
-      Serial.print("+= 2");
-      mqttClient.publish("/set/BYTEBOOOK/marker:capture1", 1, true, "+= 2");
+      Serial.print("-= 2");
+      mqttClient.publish("/set/BYTEBOOOK/marker:capture1", 1, true, "-= 2");
       Serial.print("/set/BYTEBOOOK/marker:capture2");
-      Serial.print("+= 2");
-      mqttClient.publish("/set/BYTEBOOOK/marker:capture2", 1, true, "+= 2");
+      Serial.print("-= 2");
+      mqttClient.publish("/set/BYTEBOOOK/marker:capture2", 1, true, "-= 2");
     }
     }
 }
@@ -42,6 +42,7 @@ void setup() {
 void loop() {
   Homie.loop();
 }
+
 
 
 

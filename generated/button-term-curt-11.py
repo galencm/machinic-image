@@ -26,8 +26,8 @@ cli.loop_start()
 
 print("Keybindings:")
 print(" ' ':")
-print("    += 2 to /set/BYTEBOOOK/marker:capture1")
-print("    += 2 to /set/BYTEBOOOK/marker:capture2")
+print("    -= 2 to /set/BYTEBOOOK/marker:capture1")
+print("    -= 2 to /set/BYTEBOOOK/marker:capture2")
 print("Press ESC or Ctrl-d to exit")
 print("")
 print("waiting for input...")
@@ -37,9 +37,9 @@ with Input(keynames='curtsies') as input_generator:
             break
         elif e == ' ':
             print("{} pressed".format(e))
-            cli.publish('/set/BYTEBOOOK/marker:capture1','+= 2')
+            cli.publish('/set/BYTEBOOOK/marker:capture1','-= 2')
             time.sleep(0.01)
-            cli.publish('/set/BYTEBOOOK/marker:capture2','+= 2')
+            cli.publish('/set/BYTEBOOOK/marker:capture2','-= 2')
             time.sleep(0.01)
 
         else:
