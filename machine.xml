@@ -80,7 +80,7 @@
 
     <peripheral type = "button" alternative_press = " " description = "simulate turning page">
         <output type = "integer" value = "+=2" destination = "/set/BYTEBOOOK/marker:capture1" />
-        <output type="integer" value="+ = 2" destination = "/set/BYTEBOOOK/marker:capture2" />
+        <output type="integer" value="+= 2" destination = "/set/BYTEBOOOK/marker:capture2" />
         <!--
             create inside of source to allow programmatic creation of name in /set/<name>/<slurp>?
         -->
