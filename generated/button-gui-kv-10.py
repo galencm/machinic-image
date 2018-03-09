@@ -60,8 +60,8 @@ class ButtonGui(BoxLayout):
         print('/set/BYTEBOOOK/marker:capture1','+=2')
         cli.publish('/set/BYTEBOOOK/marker:capture1','+=2')
         time.sleep(0.01)
-        print('/set/BYTEBOOOK/marker:capture2','+ = 2')
-        cli.publish('/set/BYTEBOOOK/marker:capture2','+ = 2')
+        print('/set/BYTEBOOOK/marker:capture2','+= 2')
+        cli.publish('/set/BYTEBOOOK/marker:capture2','+= 2')
         time.sleep(0.01)
 
 class ButtonApp(App):

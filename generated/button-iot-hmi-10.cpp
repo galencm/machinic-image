@@ -16,8 +16,8 @@ void loopHandler() {
       Serial.print("+=2");
       mqttClient.publish("/set/BYTEBOOOK/marker:capture1", 1, true, "+=2");
       Serial.print("/set/BYTEBOOOK/marker:capture2");
-      Serial.print("+ = 2");
-      mqttClient.publish("/set/BYTEBOOOK/marker:capture2", 1, true, "+ = 2");
+      Serial.print("+= 2");
+      mqttClient.publish("/set/BYTEBOOOK/marker:capture2", 1, true, "+= 2");
     }
     }
 }

@@ -133,7 +133,7 @@ button_gui_kv_py_gsl -> button010 [label="generates", style="dotted",fontcolor="
 DESTsetBYTEBOOOKmarkercapture1[label="/set/BYTEBOOOK/marker:capture1"]
 button010 -> DESTsetBYTEBOOOKmarkercapture1 [label="+=2"]
 DESTsetBYTEBOOOKmarkercapture2[label="/set/BYTEBOOOK/marker:capture2"]
-button010 -> DESTsetBYTEBOOOKmarkercapture2 [label="+ = 2"]
+button010 -> DESTsetBYTEBOOOKmarkercapture2 [label="+= 2"]
 button_terminal_curt_py_gsl[label="button-terminal-curt.py.gsl", style="dotted",fontcolor="gray"]
 
 button110[label="button-terminal-curt.py.gsl-10"]
@@ -141,7 +141,7 @@ button_terminal_curt_py_gsl -> button110 [label="generates", style="dotted",font
 DESTsetBYTEBOOOKmarkercapture1[label="/set/BYTEBOOOK/marker:capture1"]
 button110 -> DESTsetBYTEBOOOKmarkercapture1 [label="+=2"]
 DESTsetBYTEBOOOKmarkercapture2[label="/set/BYTEBOOOK/marker:capture2"]
-button110 -> DESTsetBYTEBOOOKmarkercapture2 [label="+ = 2"]
+button110 -> DESTsetBYTEBOOOKmarkercapture2 [label="+= 2"]
 button_iot_hmi_c_gsl[label="button-iot-hmi.c.gsl", style="dotted",fontcolor="gray"]
 
 button210[label="button-iot-hmi.c.gsl-10"]
@@ -149,7 +149,7 @@ button_iot_hmi_c_gsl -> button210 [label="generates", style="dotted",fontcolor="
 DESTsetBYTEBOOOKmarkercapture1[label="/set/BYTEBOOOK/marker:capture1"]
 button210 -> DESTsetBYTEBOOOKmarkercapture1 [label="+=2"]
 DESTsetBYTEBOOOKmarkercapture2[label="/set/BYTEBOOOK/marker:capture2"]
-button210 -> DESTsetBYTEBOOOKmarkercapture2 [label="+ = 2"]
+button210 -> DESTsetBYTEBOOOKmarkercapture2 [label="+= 2"]
 labelloc="t";
-label="machine.xml@2b3e12d3bb352ebe63c8ad00ac0b73481ebf3c5c";
+label="machine.xml@5de13579aa031dba6d3dc9167617373a55e530c5";
 }
