@@ -7,6 +7,8 @@
 
     <include file = "slurp_gphoto2.py" class = "SlurpGphoto2" rpc = "true" wireup = "true" />
 
+    <include file = "slurp_primitive_generic.py" class = "SlurpPrimitiveGeneric" rpc = "true" wireup = "true" />
+
     <!-- sequences -->
     <!--
     <sequence name="thing">

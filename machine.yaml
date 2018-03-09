@@ -13,6 +13,10 @@ includes:
     auto-wireup: True
     as-rpc: True
     use-class: SlurpGphoto2
+ - slurp_primitive_generic.py:
+    auto-wireup: True
+    as-rpc: True
+    use-class: SlurpPrimitiveGeneric
  - primitives-source-indexable:
     auto-wireup: True
     location: path
