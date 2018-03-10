@@ -213,7 +213,7 @@ class SlurpPrimitiveGeneric(object):
                 glworb = {}
                 glworb['uuid'] = str(uuid.uuid4())
                 glworb['source_uid'] = device['uid']
-                glworb['method'] = "slurp_primtive_generic"
+                glworb['method'] = "slurp_primitive_generic"
                 glworb['binary_key'] = blob_uuid
                 glworb['created'] = str(datetime.datetime.now())
 
