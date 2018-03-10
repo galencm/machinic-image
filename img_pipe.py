@@ -283,6 +283,24 @@ def img_ocr(context,to_key,*args):
         r.hset(context['uuid'],to_key,image_to_text(img))
     return context
 
+def img_ocr_key(context, key, to_key,*args):
+    """Optical Character Recognition(OCR) using tesseract
+
+        Args:
+            context(dict): dictionary of context info
+            key: key to use to ocr
+            to_key(str): key to store ocr results
+            *args:
+
+        Returns:
+            dict
+    """
+    with open_image(context['uuid'], key) as img:
+        logger.info(image_to_text(img))
+        # r redis conn basically global
+        r.hset(context['uuid'], to_key, image_to_text(img))
+    return context
+
 def img_ocr_rectangle(context,to_key,left,top,width,height,*args):
     with PyTessBaseAPI() as api:
         with open_image(context['uuid'],context['key']) as img:
