@@ -20,8 +20,11 @@ echo "$available"
 # add type for pip3, included inline
 
 pip3_type='
-### exact copy of bork project's pip.sh by Matthew Lyon     ###
-### except with 'pip3' replacing 'pip', see:                ###
+### exact copy of bork pip.sh ###
+### except with: ###
+###   pip3 replacing pip ###
+###   pip3 always run as sudo ###
+###   --url flag to install from github repos ###
 ### https://github.com/mattly/bork/blob/master/types/pip.sh ###
 
 # TODO --sudo flag
@@ -32,6 +35,8 @@ action=$1
 name=$2
 shift 2
 
+url=$(arguments get url $*)
+
 case $action in
   desc)
     echo "asserts presence of packages installed via pip"
@@ -39,15 +44,20 @@ case $action in
     ;;
   status)
     needs_exec "pip3" || return $STATUS_FAILED_PRECONDITION
-    pkgs=$(bake pip3 list)
+    pkgs=$(bake sudo pip3 list)
     if ! str_matches "$pkgs" "^$name"; then
       return $STATUS_MISSING
     fi
     return 0 ;;
   install)
-    bake sudo pip3 install "$name"
+    if [[ -n ${url} ]]; then
+      bake sudo pip3 install "$url"
+    else
+      bake sudo pip3 install "$name"
+    fi
     ;;
 esac'
+
 
 #install bork if it is not found
 if [[ $available == 1 ]]
@@ -65,8 +75,8 @@ if [[ $available == 1 ]]
 fi
 
 #if pip3 type does not exist add
-if [ ! -f /usr/local/src/bork/types/pip33.sh ]; then
-    echo "$pip3_type" | sudo tee /usr/local/src/bork/types/pip33.sh
+if [ ! -f /usr/local/src/bork/types/pip3.sh ]; then
+    echo "$pip3_type" | sudo tee /usr/local/src/bork/types/pip3.sh
 fi
 
 if [[ $available == 0 ]]

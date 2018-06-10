@@ -23,6 +23,7 @@ echo $OS_NAME
 for filename in *; do
   case "$filename" in
       $SCRIPT_NAME) echo "ignoring self";;
+      "environment.sh") echo "ignoring environment.sh to avoid recursion";;
       *_os_*)
       case "$filename" in
         *$OS_NAME*)
@@ -32,10 +33,10 @@ for filename in *; do
         *) ;;
       esac
       ;;
-      *.sh)
-            echo "including $filename"
-            include $filename
-      ;;
+      # *.sh)
+      #       echo "including $filename"
+      #       include $filename
+      # ;;
       *.bork)
             echo "including $filename"
             include $filename

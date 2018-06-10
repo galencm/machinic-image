@@ -14,5 +14,8 @@ ok pip3 python-consul
 ok pip3 gphoto2
 ok pip3 Jinja2
 ok pip3 tesserocr
-pip3 install https://github.com/galencm/machinic-primitives-sources/zipball/master
+ok pip3 ruamel.yaml
+ok pip3 zerorpc
+ok pip3 lings --url=https://github.com/galencm/machinic-lings/zipball/master
+ok pip3 sourceprimitives --url=https://github.com/galencm/machinic-primitives-sources/zipball/master
 

@@ -10,19 +10,6 @@ ok apt povray
 
 
 
-which check_gphoto
-#0: found 1:not found
-available=$?
-if [[ $available == 1 ]]
-    then
-    sudo cp check_gphoto (include.destination)
-fi
-
-if [[ $available == 0 ]]
-    then echo check_gphoto found
-fi
-
-
 which chdkptp
 #0: found 1:not found
 available=$?
