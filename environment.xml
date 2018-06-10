@@ -4,6 +4,11 @@
     <!-- os packages -->
     <include name="povray" system="dnf" />
     <include name="povray" system="apt" />
+    <include name="python3-devel" system="dnf" />
+    <include name="python3-devel" system="apt" />
+    <include name="libgphoto2-devel" system="dnf" />
+    <include name="libgphoto2-devel" system="apt" />
+
     <!-- python packages -->
     <!-- alphabetical would be useful -->
     <include name="lorem" system="python3"/>
