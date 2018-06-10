@@ -9,6 +9,18 @@
 
     <include file = "slurp_primitive_generic.py" class = "SlurpPrimitiveGeneric" rpc = "true" wireup = "true" />
 
+    <!-- background gphoto processes that handle when a camera is connected via usb
+    can interfere with chdk connection, check periodically for processes that
+    contain 'gphoto' and at least one '-' and terminate -->
+    <include file = "check_for_process.py" name = "check-for-gphoto" rpc = "false" />
+        <argument value = "--name-includes" />
+        <argument value = "gphoto" />
+        <argument value = "-" />
+        <argument value = "--check-interval" />
+        <argument value = "10" />
+        <argument value = "--terminate-found" />
+    </include>
+
     <!-- sequences -->
     <!--
     <sequence name="thing">

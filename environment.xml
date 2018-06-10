@@ -28,18 +28,6 @@
     sudo cp -r /tmp/chdkptp-r785/ /usr/local/src/chdkptp
     sudo ln -s /usr/local/src/chdkptp/chdkptp.sh /usr/local/bin/chdkptp
     -->
-    <include name="check_gphoto"
-            system="linux_amd64"
-            url="check_gphoto"
-            destination="/usr/local/bin"
-            command="local copy"
-    />
-    <include name="check_gphoto"
-            system="linux_arm"
-            url="check_gphoto"
-            destination="/usr/local/bin"
-            command="local copy"
-    />    
     <include name="chdkptp"
             system="linux_amd64"
             url="https://www.assembla.com/spaces/chdkptp/documents/bKFAg00ZGr54_ddmr6CpXy/download/bKFAg00ZGr54_ddmr6CpXy"

@@ -1,8 +1,0 @@
-check {
-          type = "script"
-          #id = "interfering-gphoto"
-          name = "Interfering os gphoto processes"
-          command = "/usr/local/bin/gphoto_check.py"
-          interval = "10s"
-          timeout = "1s"
-          }
