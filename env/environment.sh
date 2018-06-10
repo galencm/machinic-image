@@ -84,4 +84,5 @@ if [[ $available == 0 ]]
 fi
 
 #ready to start bork scripts
-$(bork satisfy env_meta.bork)
+bork satisfy env_meta.bork
+

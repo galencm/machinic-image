@@ -7,6 +7,8 @@
 
 
 ok yum povray
+ok yum python3-devel
+ok yum libgphoto2-devel
 
 
 which chdkptp

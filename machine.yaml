@@ -17,6 +17,10 @@ includes:
     auto-wireup: True
     as-rpc: True
     use-class: SlurpPrimitiveGeneric
+ - check_for_process.py:
+    as-rpc: False
+    name: check-for-gphoto
+    args: [--name-includes,gphoto,-,--check-interval,10,--terminate-found]
  - primitives-source-indexable:
     auto-wireup: True
     location: path
