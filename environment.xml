@@ -5,9 +5,23 @@
     <include name="povray" system="dnf" />
     <include name="povray" system="apt" />
     <include name="python3-devel" system="dnf" />
-    <include name="python3-devel" system="apt" />
+    <include name="python3-dev" system="apt" />
     <include name="libgphoto2-devel" system="dnf" />
-    <include name="libgphoto2-devel" system="apt" />
+    <include name="libgphoto2-dev" system="apt" />
+    <include name="libpng-devel" system="dnf" />
+    <include name="libpng-dev" system="apt" />
+    <include name="libjpeg-devel" system="dnf" />
+    <include name="libjpeg-dev" system="apt" />
+    <include name="libtiff-devel" system="dnf" />
+    <include name="libtiff-dev" system="apt" />
+    <include name="leptonica" system="dnf" />
+    <include name="leptonica" system="apt" />
+    <include name="leptonica-devel" system="dnf" />
+    <include name="leptonica-dev" system="apt" />
+    <include name="tesseract" system="dnf" />
+    <include name="tesseract" system="apt" />
+    <include name="tesseract-devel" system="dnf" />
+    <include name="tesseract-dev" system="apt" />
 
     <!-- python packages -->
     <!-- alphabetical would be useful -->

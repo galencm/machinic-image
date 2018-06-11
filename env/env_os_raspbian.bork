@@ -7,8 +7,15 @@
 
 
 ok apt povray
-ok apt python3-devel
-ok apt libgphoto2-devel
+ok apt python3-dev
+ok apt libgphoto2-dev
+ok apt libpng-dev
+ok apt libjpeg-dev
+ok apt libtiff-dev
+ok apt leptonica
+ok apt leptonica-dev
+ok apt tesseract
+ok apt tesseract-dev
 
 
 
@@ -18,7 +25,7 @@ available=$?
 if [[ $available == 1 ]]
     then
     echo chdkptp not found installing
-    wget -P /tmp https://www.assembla.com/spaces/chdkptp/documents/bJUowA0ZGr54kQdmr6QqzO/download/bJUowA0ZGr54kQdmr6QqzO
+    wget -P /tmp https://www.assembla.com/spaces/chdkptp/documents/bJUowA0ZGr54kQdmr6QqzO/download/bJUowA0ZGr54kQdmr6QqzO --backups=1
 
     unzip /tmp/bJUowA0ZGr54kQdmr6QqzO -d /tmp
     #installs to /usr/local/bin

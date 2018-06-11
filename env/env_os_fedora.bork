@@ -9,6 +9,13 @@
 ok yum povray
 ok yum python3-devel
 ok yum libgphoto2-devel
+ok yum libpng-devel
+ok yum libjpeg-devel
+ok yum libtiff-devel
+ok yum leptonica
+ok yum leptonica-devel
+ok yum tesseract
+ok yum tesseract-devel
 
 
 which chdkptp
@@ -17,7 +24,7 @@ available=$?
 if [[ $available == 1 ]]
     then
     echo chdkptp not found installing
-    wget -P /tmp https://www.assembla.com/spaces/chdkptp/documents/bKFAg00ZGr54_ddmr6CpXy/download/bKFAg00ZGr54_ddmr6CpXy
+    wget -P /tmp https://www.assembla.com/spaces/chdkptp/documents/bKFAg00ZGr54_ddmr6CpXy/download/bKFAg00ZGr54_ddmr6CpXy --backups=1
 
     unzip /tmp/bKFAg00ZGr54_ddmr6CpXy -d /tmp
     #installs to /usr/local/bin
