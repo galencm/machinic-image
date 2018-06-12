@@ -15,13 +15,13 @@
     <include name="libtiff-devel" system="dnf" />
     <include name="libtiff-dev" system="apt" />
     <include name="leptonica" system="dnf" />
-    <include name="leptonica" system="apt" />
+    <include name="leptonica-progs" system="apt" />
     <include name="leptonica-devel" system="dnf" />
-    <include name="leptonica-dev" system="apt" />
+    <include name="libleptonica-dev" system="apt" />
     <include name="tesseract" system="dnf" />
-    <include name="tesseract" system="apt" />
+    <include name="tesseract-cor" system="apt" />
     <include name="tesseract-devel" system="dnf" />
-    <include name="tesseract-dev" system="apt" />
+    <include name="tesseract-ocr-dev" system="apt" />
     <!-- for chdkptp-r785 binary -->
     <include name="compat-readline6-static" system="dnf" note="chdkptp-r785" />
     <include name="libreadline6" system="apt" note="chdkptp-r785" />

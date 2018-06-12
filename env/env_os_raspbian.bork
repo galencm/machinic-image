@@ -12,10 +12,10 @@ ok apt libgphoto2-dev
 ok apt libpng-dev
 ok apt libjpeg-dev
 ok apt libtiff-dev
-ok apt leptonica
-ok apt leptonica-dev
-ok apt tesseract
-ok apt tesseract-dev
+ok apt leptonica-progs
+ok apt libleptonica-dev
+ok apt tesseract-cor
+ok apt tesseract-ocr-dev
 ok apt libreadline6
 
 
