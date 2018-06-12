@@ -16,6 +16,7 @@ ok apt leptonica
 ok apt leptonica-dev
 ok apt tesseract
 ok apt tesseract-dev
+ok apt libreadline6
 
 
 

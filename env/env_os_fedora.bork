@@ -16,6 +16,7 @@ ok yum leptonica
 ok yum leptonica-devel
 ok yum tesseract
 ok yum tesseract-devel
+ok yum compat-readline6-static
 
 
 which chdkptp

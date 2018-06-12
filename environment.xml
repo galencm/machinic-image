@@ -22,6 +22,10 @@
     <include name="tesseract" system="apt" />
     <include name="tesseract-devel" system="dnf" />
     <include name="tesseract-dev" system="apt" />
+    <!-- for chdkptp-r785 binary -->
+    <include name="compat-readline6-static" system="dnf" note="chdkptp-r785" />
+    <include name="libreadline6" system="apt" note="chdkptp-r785" />
+
 
     <!-- python packages -->
     <!-- alphabetical would be useful -->
