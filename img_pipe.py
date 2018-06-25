@@ -277,10 +277,13 @@ def img_ocr(context,to_key,*args):
         Returns:
             dict
     """
+    # set PSM (Page Segmentation Mode) to 6 to handle
+    # images containing only numerals
+    psm = 6
     with open_image(context['uuid'],context['key']) as img:
-        logger.info(image_to_text(img))
+        logger.info(image_to_text(img, psm=psm))
         # r redis conn basically global
-        r.hset(context['uuid'],to_key,image_to_text(img))
+        r.hset(context['uuid'],to_key,image_to_text(img, psm=psm).strip())
     return context
 
 def img_ocr_key(context, key, to_key,*args):
@@ -295,10 +298,15 @@ def img_ocr_key(context, key, to_key,*args):
         Returns:
             dict
     """
+    # set PSM (Page Segmentation Mode) to 6 to handle
+    # images containing only numerals
+    psm = 6
     with open_image(context['uuid'], key) as img:
-        logger.info(image_to_text(img))
+        logger.info(image_to_text(img, psm=psm))
         # r redis conn basically global
-        r.hset(context['uuid'], to_key, image_to_text(img))
+        # set PSM (Page Segmentation Mode) to 6 to handle
+        # images containing only numerals
+        r.hset(context['uuid'], to_key, image_to_text(img, psm=psm).strip())
     return context
 
 def img_ocr_rectangle(context,to_key,left,top,width,height,*args):
